@@ -1,0 +1,7 @@
+---
+- hosts: devlaptops
+  tasks:
+  - name: install tcsh
+    apt: name=tcsh
+  - name: install ssh and sshd
+    apt: name=ssh

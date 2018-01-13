@@ -1,0 +1,11 @@
+---
+- hosts: devlaptops
+  vars:
+    ssh_port: 22
+  tasks:
+  - name: install ufw
+    apt: name=ufw
+  - name: set up ufw to deny all
+    ufw: state=enabled policy=deny
+  - name: allow ssh traffic
+    ufw: rule=allow name=OpenSSH

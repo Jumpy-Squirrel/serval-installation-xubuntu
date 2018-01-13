@@ -1,0 +1,11 @@
+---
+- hosts: devlaptops
+  tasks:
+  - name: install java jdk
+    apt: name=openjdk-8-jdk
+  - name: install java jdk sources
+    apt: name=openjdk-8-source
+  - name: install groovy
+    apt: name=groovy2
+  - name: install git 
+    apt: name=git

@@ -1,0 +1,5 @@
+---
+- hosts: devlaptops
+  roles:
+  - ansible-role-intellij
+ 

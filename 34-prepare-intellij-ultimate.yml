@@ -1,0 +1,10 @@
+---
+- hosts: devlaptops
+  tasks:
+  - name: install git 
+    apt: name=git
+  - name: clone ansible-role-intellij from github 
+    command: git clone https://github.com/rdeknijf/ansible-role-intellij.git \
+             creates=./ansible-role-intellij/README.md
+    become: yes
+    become_user: rat
