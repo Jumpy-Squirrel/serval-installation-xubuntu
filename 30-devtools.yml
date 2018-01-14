@@ -35,3 +35,9 @@
       path: /usr/share/tomcat8/lib/mysql-connector-java.jar
       src: /usr/share/java/mysql-connector-java.jar
       state: link
+  - name: install apache ant
+    apt:
+      name: ant
+  - name: install maven
+    apt:
+      name: maven
