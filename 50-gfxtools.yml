@@ -1,0 +1,6 @@
+---
+- hosts: devlaptops
+  tasks:
+  - name: install gimp
+    apt:
+      name: gimp
