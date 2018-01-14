@@ -19,3 +19,19 @@
   - name: install mysql client
     apt:
       name: mysql-client
+  - name: download mysql jdbc driver
+    apt:
+      name: libmysql-java
+  - name: install tomcat distribution
+    apt:
+      name: tomcat8
+  - name: disable autostart for tomcat
+    service:
+      name: tomcat8
+      state: stopped
+      enabled: no
+  - name: install mysql driver into tomcat
+    file:
+      path: /usr/share/tomcat8/lib/mysql-connector-java.jar
+      src: /usr/share/java/mysql-connector-java.jar
+      state: link
