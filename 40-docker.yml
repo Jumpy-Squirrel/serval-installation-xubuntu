@@ -1,0 +1,27 @@
+---
+- hosts: devlaptops
+  vars:
+    user: rat
+  tasks:
+  - name: install apt-transport-https
+    apt:
+      name: apt-transport-https
+  - name: install ca-certificates
+    apt:
+      name: ca-certificates
+  - name: install software-properties-common
+    apt:
+      name: software-properties-common
+  - name: add the official docker repo key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+  - name: add the official docker repo
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} stable
+  - name: install docker-ce
+    apt:
+      name: docker-ce
+  - name: Adding existing user '{{ user }}' to group docker
+    user: name='{{ user }}'
+          groups=docker
+          append=yes

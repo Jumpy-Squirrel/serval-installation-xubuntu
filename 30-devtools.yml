@@ -2,10 +2,20 @@
 - hosts: devlaptops
   tasks:
   - name: install java jdk
-    apt: name=openjdk-8-jdk
+    apt:
+      name: openjdk-8-jdk
   - name: install java jdk sources
-    apt: name=openjdk-8-source
+    apt:
+      name: openjdk-8-source
   - name: install groovy
-    apt: name=groovy2
+    apt:
+      name: groovy2
   - name: install git 
-    apt: name=git
+    apt:
+      name: git
+  - name: install curl
+    apt:
+      name: curl
+  - name: install mysql client
+    apt:
+      name: mysql-client
