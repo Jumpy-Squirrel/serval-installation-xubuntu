@@ -1,0 +1,24 @@
+---
+- hosts: devlaptops
+  tasks:
+  - name: add the ubuntu multiverse repo
+    apt_repository:
+      repo: "{{item}}"
+    register: multiverse_installed
+    when: ansible_distribution == 'Ubuntu'
+    with_items:
+      - 'deb http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}} multiverse'
+      - 'deb-src http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}} multiverse'
+      - 'deb http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}}-updates multiverse'
+      - 'deb-src http://archive.ubuntu.com/ubuntu {{ansible_distribution_release}}-updates multiverse'
+  - name: update apt cache
+    apt:
+      update_cache: true
+    when: multiverse_installed | changed
+# you have to do these by hand because of the stupid steam license agreement dialog during package installation
+#  - name: install steam
+#    apt:
+#      name: steam
+#  - name: install steam cmd line client
+#    apt:
+#      name: steamcmd

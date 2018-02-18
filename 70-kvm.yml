@@ -1,0 +1,12 @@
+---
+- hosts: devlaptops
+  vars:
+    user: rat
+  tasks:
+  - name: install qemu-kvm
+    apt:
+      name: qemu-kvm 
+  - name: Adding existing user '{{ user }}' to group kvm
+    user: name='{{ user }}'
+          groups=kvm
+          append=yes
