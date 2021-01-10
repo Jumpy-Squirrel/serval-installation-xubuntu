@@ -10,3 +10,6 @@
     user: name='{{ user }}'
           groups=kvm
           append=yes
+  - name: install spice client virt-viewer
+    apt:
+      name: virt-viewer
